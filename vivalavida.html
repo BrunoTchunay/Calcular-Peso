@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de Raio</title>
+  <style>
+    input {
+      height: 40px;
+      border: 1px solid gray;
+      margin-bottom: 10px;
+      width: 200px;
+    }
+  </style>
+</head>
+<body>
+  <div id="app" style="display: flex; flex-direction: column; align-items: center;">
+    <input type="text" id="peso" placeholder="Peso (kg)" />
+    <input type="text" id="largura" placeholder="Largura (cm)" />
+    <p id="resultado" style="margin-top: 20px;"></p>
+  </div>
+
+  <script>
+    document.getElementById('peso').addEventListener('input', calcularRaio);
+    document.getElementById('largura').addEventListener('input', calcularRaio);
+
+    function calcularRaio() {
+      var peso = parseFloat(document.getElementById('peso').value);
+      var largura = parseFloat(document.getElementById('largura').value);
+      
+      var raio = (Math.sqrt((peso * 1384) / largura + 92.15) - 10) / 2;
+      var resultado = raio.toFixed(2) + ' cm';
+      
+      document.getElementById('resultado').textContent = 'Resultado: ' + resultado;
+    }
+  </script>
+</body>
+</html>
